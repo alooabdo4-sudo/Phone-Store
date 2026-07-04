@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات - متجر الهواتف الفاخرة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filters button {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background-color: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .filters button:hover,
+        .filters button.active {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .product-specs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .spec {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            color: #555;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .filters {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📱 متجر الهواتف الفاخرة</h1>
+        <p>أفخم الهواتف الذكية بأفضل الأسعار</p>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <button class="active">الكل</button>
+            <button>iPhone</button>
+            <button>Samsung</button>
+            <button>Google Pixel</button>
+            <button>OnePlus</button>
+        </div>
+
+        <div class="products-grid">
+            <!-- المنتج 1 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">iPhone 15 Pro Max</div>
+                    <div class="product-description">أحدث تقنيات من Apple مع معالج A17 Pro</div>
+                    <div class="product-specs">
+                        <span class="spec">6.7 بوصة</span>
+                        <span class="spec">512GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">7,999 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 2 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">Samsung Galaxy S24 Ultra</div>
+                    <div class="product-description">تصوير احترافي مع تقنيات الذكاء الاصطناعي</div>
+                    <div class="product-specs">
+                        <span class="spec">6.8 بوصة</span>
+                        <span class="spec">256GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">6,999 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 3 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">Google Pixel 8 Pro</div>
+                    <div class="product-description">أفضل الكاميرات مع معالج Tensor</div>
+                    <div class="product-specs">
+                        <span class="spec">6.7 بوصة</span>
+                        <span class="spec">256GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">5,499 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 4 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">OnePlus 12</div>
+                    <div class="product-description">أداء عالي وشحن سريع جداً</div>
+                    <div class="product-specs">
+                        <span class="spec">6.7 بوصة</span>
+                        <span class="spec">512GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">4,999 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 5 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">iPhone 15</div>
+                    <div class="product-description">الخيار الاقتصادي من Apple</div>
+                    <div class="product-specs">
+                        <span class="spec">6.1 بوصة</span>
+                        <span class="spec">128GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">4,499 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 6 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">Samsung Galaxy A54</div>
+                    <div class="product-description">أداء متميز بسعر معقول</div>
+                    <div class="product-specs">
+                        <span class="spec">6.4 بوصة</span>
+                        <span class="spec">128GB</span>
+                        <span class="spec">5G</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="price">2,999 ر.س</div>
+                        <button class="btn-add">أضف للسلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 متجر الهواتف الفاخرة - جميع الحقوق محفوظة</p>
+        <p>نوفر أفضل الهواتف الذكية بأسعار تنافسية</p>
+    </footer>
+
+    <script>
+        // تفعيل أزرار التصفية
+        const filterButtons = document.querySelectorAll('.filters button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // تفعيل أزرار الإضافة للسلة
+        const addButtons = document.querySelectorAll('.btn-add');
+        addButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productName = e.target.closest('.product-card').querySelector('.product-name').textContent;
+                alert(`تم إضافة ${productName} إلى السلة!`);
+            });
+        });
+    </script>
+</body>
+</html>
