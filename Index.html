@@ -1,1 +1,185 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متجر الهواتف الفاخر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#0d6efd;
+      --bg:#f7f7f9;
+      --card:#ffffff;
+      --muted:#6c757d;
+      --accent:#ff6b6b;
+      font-family: 'Cairo', sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#222}
+    header{background:linear-gradient(90deg,var(--primary),#6f42c1);color:#fff;padding:18px 12px}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
 
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:#fff;color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-left:12px}
+
+    .search-cart{display:flex;align-items:center;gap:12px}
+    .search{display:flex;align-items:center;background:#fff;padding:6px;border-radius:8px}
+    .search input{border:0;outline:0;padding:8px 10px;width:220px}
+    .cart{position:relative;color:#fff}
+    .cart .count{position:absolute;top:-8px;left:-8px;background:var(--accent);color:#fff;border-radius:50%;padding:3px 7px;font-size:12px}
+
+    main{padding:22px}
+    .hero{background:linear-gradient(90deg,rgba(13,110,253,0.08),rgba(111,66,193,0.06));padding:24px;border-radius:10px;margin-bottom:18px}
+    .hero h1{margin:0 0 6px 0}
+    .hero p{margin:0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(15,15,15,0.04);display:flex;flex-direction:column}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+    .card h3{margin:10px 0 6px 0;font-size:18px}
+    .price-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .price{font-weight:700;color:var(--primary)}
+    .old{color:var(--muted);text-decoration:line-through;font-size:13px}
+    .btn{background:var(--primary);color:#fff;padding:8px;border-radius:8px;border:0;cursor:pointer}
+    .btn.secondary{background:#eee;color:#333}
+
+    footer{padding:24px;color:var(--muted);text-align:center}
+
+    @media (max-width:600px){
+      .search input{width:120px}
+      .brand .logo{width:46px;height:46px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container top">
+      <div class="brand">
+        <div class="logo">هو</div>
+        <div>
+          <div style="font-weight:700">متجر الهواتف الفاخر</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.85)">أفضل العروض على أحدث الهواتف</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:18px">
+        <nav>
+          <a href="#">الرئيسية</a>
+          <a href="#products">الهواتف</a>
+          <a href="#about">من نحن</a>
+        </nav>
+        <div class="search-cart">
+          <div class="search">
+            <input id="searchInput" placeholder="ابحث عن هاتف أو ماركة..." aria-label="بحث">
+            <button class="btn secondary" id="clearBtn">مسح</button>
+          </div>
+          <div class="cart" title="عربة التسوق">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-12z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1" fill="white"/><circle cx="18" cy="20" r="1" fill="white"/></svg>
+            <div class="count" id="cartCount">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>أهلاً بك في متجر الهواتف الفاخر</h1>
+      <p>تصفح أحدث الهوا��ف الذكية مع أفضل الأسعار وخصومات حصرية. استخدم البحث للعثور على المنتج المطلوب بسرعة.</p>
+    </section>
+
+    <section id="products">
+      <h2 style="margin-top:0">الهواتف المتاحة</h2>
+      <div class="grid" id="productsGrid">
+        <!-- بطاقات المنتجات ستُنشأ ديناميكيًا -->
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:22px">
+      <h2>من نحن</h2>
+      <p>متجر متخصص في بيع الهواتف الذكية والاكسسوارات مع شحن سريع وخدمة عملاء متميزة.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 متجر الهواتف الفاخر — جميع الحقوق محفوظة
+  </footer>
+
+  <script>
+    const products = [
+      {id:1,name:'iPhone 14 Pro Max',brand:'Apple',price:12999,oldPrice:14999,image:'https://via.placeholder.com/400x300?text=iPhone+14+Pro+Max'},
+      {id:2,name:'Galaxy S23 Ultra',brand:'Samsung',price:11999,oldPrice:13499,image:'https://via.placeholder.com/400x300?text=Galaxy+S23+Ultra'},
+      {id:3,name:'Pixel 7 Pro',brand:'Google',price:8999,oldPrice:9999,image:'https://via.placeholder.com/400x300?text=Pixel+7+Pro'},
+      {id:4,name:'Xperia 1 V',brand:'Sony',price:8499,oldPrice:9499,image:'https://via.placeholder.com/400x300?text=Xperia+1+V'},
+      {id:5,name:'Mi 13',brand:'Xiaomi',price:5999,oldPrice:6999,image:'https://via.placeholder.com/400x300?text=Mi+13'},
+      {id:6,name:'OnePlus 11',brand:'OnePlus',price:6499,oldPrice:7499,image:'https://via.placeholder.com/400x300?text=OnePlus+11'}
+    ];
+
+    const productsGrid = document.getElementById('productsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+    const cartCount = document.getElementById('cartCount');
+
+    function render(list){
+      productsGrid.innerHTML = '';
+      if(list.length === 0){
+        productsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted)">لا توجد نتائج</div>';
+        return;
+      }
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <div style="color:var(--muted);font-size:14px;margin-bottom:8px">${p.brand}</div>
+          <div class="price-row">
+            <div>
+              <div class="price">${p.price.toLocaleString()} ج.م</div>
+              <div class="old">${p.oldPrice.toLocaleString()} ج.م</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="btn addBtn" data-id="${p.id}">أضف إلى العربة</button>
+              <button class="btn secondary" onclick="alert('تفاصيل ${p.name}')">تفاصيل</button>
+            </div>
+          </div>
+        `;
+        productsGrid.appendChild(card);
+      });
+      document.querySelectorAll('.addBtn').forEach(btn => btn.addEventListener('click', addToCart));
+    }
+
+    function addToCart(e){
+      const id = e.currentTarget.dataset.id;
+      const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+      cart[id] = (cart[id] || 0) + 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      e.currentTarget.textContent = 'أضيف ✓';
+      setTimeout(()=> e.currentTarget.textContent = 'أضف إلى العربة', 1200);
+    }
+
+    function updateCartCount(){
+      const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+      const total = Object.values(cart).reduce((s,v) => s + v, 0);
+      cartCount.textContent = total;
+    }
+
+    function filterProducts(){
+      const q = searchInput.value.trim().toLowerCase();
+      if(!q) return render(products);
+      const filtered = products.filter(p => (p.name + ' ' + p.brand).toLowerCase().includes(q));
+      render(filtered);
+    }
+
+    searchInput.addEventListener('input', filterProducts);
+    clearBtn.addEventListener('click', ()=>{searchInput.value='';filterProducts();searchInput.focus()});
+
+    // initialize
+    render(products);
+    updateCartCount();
+  </script>
+</body>
+</html>
