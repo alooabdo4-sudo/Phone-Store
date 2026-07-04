@@ -97,7 +97,7 @@
 
     /* cart modal */
     .cart-panel{
-      position:fixed;left:unset;right:18px;top:88px;width:340px;max-height:70vh;background:#fff;border-radius:12px;box-shadow:0 30px 70px rgba(10,20,50,0.18);overflow:auto;padding:12px;z-index:90;display:none;flex-direction:column;gap:10px
+      position:fixed;left:unset;right:18px;top:88px;width:340px;max-height:70vh;background:#fff;border-radius:12px;box-shadow:0 30px 70px rgba(10,20,50,0.18);overflow:auto;padding:12px;z-index:90;display:none
     }
     .cart-panel.visible{display:flex}
     .cart-item{display:flex;gap:10px;align-items:center;border-radius:8px;padding:8px}
@@ -122,7 +122,7 @@
       <div class="brand">
         <div class="logo" aria-hidden="true">هو</div>
         <div>
-          <div style="font-weight:700">متجر الهواتف الفاخر</div>
+          <div style="font-weight:700">��تجر الهواتف الفاخر</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.85)">أفضل العروض على أحدث الهواتف</div>
         </div>
       </div>
@@ -158,7 +158,7 @@
     <section class="hero" aria-labelledby="heroTitle">
       <div class="text">
         <h1 id="heroTitle">أهلاً بك في متجر الهواتف الفاخر</h1>
-        <p>تصفح أحدث الهواتف الذكية مع أفضل الأسعار وخصومات حصرية. اختر هاتفك المفضل بسرعة باستخدام البحث أو استعرض التشكيلة المميزة أدناه.</p>
+        <p>تصفح أحدث الهواتف الذكية مع أفضل الأسعار وخصومات حصرية. اختر هاتفك المفضل بسرعة باستخدام البحث أو استعرض الفئات.</p>
         <div class="cta">
           <button class="btn" id="shopAll">تسوق الآن</button>
           <button class="btn secondary" id="viewOffers">العروض الحالية</button>
@@ -178,7 +178,7 @@
 
     <section id="about" style="margin-top:22px">
       <h2>من نحن</h2>
-      <p>متجر متخصص في بيع الهواتف الذكية والاكسسوارات مع شحن سريع وخدمة عملاء متميزة. نسعى لتقديم تجربة شراء سهلة وآمنة.</p>
+      <p>متجر متخصص في بيع الهواتف الذكية والاكسسوارات مع شحن سريع وخدمة عملاء متميزة. نسعى لتقديم تجربة شراء سهلة وسريعة.</p>
     </section>
   </main>
 
@@ -208,12 +208,12 @@
 
   <script>
     const products = [
-      {id:1,name:'iPhone 14 Pro Max',brand:'Apple',price:12999,oldPrice:14999,image:'https://via.placeholder.com/400x300?text=iPhone+14+Pro+Max',rating:4.7},
-      {id:2,name:'Galaxy S23 Ultra',brand:'Samsung',price:11999,oldPrice:13499,image:'https://via.placeholder.com/400x300?text=Galaxy+S23+Ultra',rating:4.6},
-      {id:3,name:'Pixel 7 Pro',brand:'Google',price:8999,oldPrice:9999,image:'https://via.placeholder.com/400x300?text=Pixel+7+Pro',rating:4.4},
-      {id:4,name:'Xperia 1 V',brand:'Sony',price:8499,oldPrice:9499,image:'https://via.placeholder.com/400x300?text=Xperia+1+V',rating:4.2},
-      {id:5,name:'Mi 13',brand:'Xiaomi',price:5999,oldPrice:6999,image:'https://via.placeholder.com/400x300?text=Mi+13',rating:4.1},
-      {id:6,name:'OnePlus 11',brand:'OnePlus',price:6499,oldPrice:7499,image:'https://via.placeholder.com/400x300?text=OnePlus+11',rating:4.3}
+      {id:1,name:'iPhone 14 Pro Max',brand:'Apple',price:12999,oldPrice:14999,image:'assets/images/iphone-14-pro-max.svg',rating:4.7},
+      {id:2,name:'Galaxy S23 Ultra',brand:'Samsung',price:11999,oldPrice:13499,image:'assets/images/galaxy-s23-ultra.svg',rating:4.6},
+      {id:3,name:'Pixel 7 Pro',brand:'Google',price:8999,oldPrice:9999,image:'assets/images/pixel-7-pro.svg',rating:4.4},
+      {id:4,name:'Xperia 1 V',brand:'Sony',price:8499,oldPrice:9499,image:'assets/images/xperia-1-v.svg',rating:4.2},
+      {id:5,name:'Mi 13',brand:'Xiaomi',price:5999,oldPrice:6999,image:'assets/images/mi-13.svg',rating:4.1},
+      {id:6,name:'OnePlus 11',brand:'OnePlus',price:6499,oldPrice:7499,image:'assets/images/oneplus-11.svg',rating:4.3}
     ];
 
     const productsGrid = document.getElementById('productsGrid');
