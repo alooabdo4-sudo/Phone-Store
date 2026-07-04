@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>متجر الهواتف</title>
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--accent:#2b7cff;--muted:#6b7280}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#111;direction:rtl}
+    header{background:linear-gradient(90deg,#fff 0,#f0f4ff);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+    h1{margin:0;font-size:1.2rem}
+    .controls{margin-left:auto;display:flex;gap:.5rem;align-items:center}
+    input[type="search"]{padding:.5rem .75rem;border:1px solid #e5e7eb;border-radius:8px;width:220px}
+    main{padding:1.25rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+    .card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(17,24,39,.06);display:flex;flex-direction:column;gap:.6rem}
+    .thumb{height:160px;background:linear-gradient(180deg,#eef2ff,#fff);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted)}
+    .title{font-size:1rem;margin:0}
+    .price{color:var(--accent);font-weight:700}
+    .meta{font-size:.9rem;color:var(--muted)}
+    .actions{margin-top:auto;display:flex;gap:.5rem}
+    button{background:var(--accent);color:#fff;border:none;padding:.5rem .75rem;border-radius:8px;cursor:pointer}
+    @media (max-width:420px){input[type="search"]{width:140px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>متجر الهواتف</h1>
+    <div class="controls">
+      <input id="search" type="search" placeholder="ابحث عن هاتف..." aria-label="ابحث عن هاتف">
+    </div>
+  </header>
+
+  <main>
+    <section id="products" class="grid" aria-live="polite">
+      <!-- بطاقات المنتجات تُولَّد بواسطة جافاسكربت -->
+    </section>
+  </main>
+
+  <script>
+    const phones = [
+      { id:1, name:"Galaxy S24", brand:"Samsung", price:1199, desc:"شاشة 6.2\", كاميرا ثلاثية" },
+      { id:2, name:"iPhone 15", brand:"Apple", price:1299, desc:"شاشة 6.1\", أداء عالي" },
+      { id:3, name:"Pixel 8", brand:"Google", price:899, desc:"كاميرا ذكية ونظام نظيف" },
+      { id:4, name:"Xperia 1 V", brand:"Sony", price:999, desc:"شاشة 4K وتجربة وسائط" }
+    ];
+
+    const container = document.getElementById('products');
+    const search = document.getElementById('search');
+
+    function renderList(list){
+      container.innerHTML = '';
+      if(list.length === 0){
+        container.innerHTML = '<p class="meta">لا توجد نتائج.</p>';
+        return;
+      }
+      list.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="thumb">${p.brand}</div>
+          <h2 class="title">${p.name}</h2>
+          <div class="meta">${p.desc}</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+            <div class="price">${p.price} USD</div>
+            <div class="actions">
+              <button onclick="addToCart(${p.id})">أضف للسلة</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function addToCart(id){
+      const p = phones.find(x=>x.id===id);
+      alert(p.name + ' أضيف إلى السلة');
+    }
+
+    search.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      const filtered = phones.filter(p => (p.name + ' ' + p.brand + ' ' + p.desc).toLowerCase().includes(q));
+      renderList(filtered);
+    });
+
+    // initial render
+    renderList(phones);
+  </script>
+</body>
+</html>
